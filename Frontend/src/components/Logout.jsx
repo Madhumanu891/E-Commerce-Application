@@ -10,7 +10,7 @@ const Logout = () => {
     Cookies.remove("lc")
     obj.stateupdate({"token":"", "uid":"", "role": "", "name":""})
     navigate("/")
-  })
+  },[])
   return (
     <div>
        

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Ct from './Context';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -61,6 +61,7 @@ const Login = () => {
             Login
           </button>
         </div>
+        <div className='w-full mt-2'><Link to="/resetpassword" className='text-blue-500 text-md'>Forgot Password?</Link></div>
       </div>
     </div>
   );

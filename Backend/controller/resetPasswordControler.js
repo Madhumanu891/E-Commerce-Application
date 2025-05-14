@@ -26,7 +26,7 @@ const sendotp=async(req,res)=>{
             text: `${otp}`, // plain‑text body
            // HTML body
           });
-          res.json({"msg":"otp sent"})
+          res.json({message:"otp sent"})
 
 
         }else{
