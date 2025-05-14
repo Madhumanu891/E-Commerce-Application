@@ -1,0 +1,18 @@
+/* index.css */
+
+/* Tailwind's base styles */
+@tailwind base;
+
+/* Tailwind's component styles */
+@tailwind components;
+
+/* Tailwind's utility classes */
+@tailwind utilities;
+
+/* You can also add custom global styles here */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
