@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Resetpassword = () => {
   const [uid, setUid] = useState("")
   const [message, setMessage] = useState("")
+  const navigate=useNavigate()
 
   const fun = (e) => {
     setUid(e.target.value)
@@ -13,6 +14,7 @@ const Resetpassword = () => {
   const send = () => {
     axios.get(`http://localhost:5000/sendotp/${uid}`).then((res) => {
       setMessage(res.data.message)
+      setTimeout(()=>navigate(`/updatepassword`),3000)
     })
   }
 

@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Ct from './Context'
 
 const Updatepassword = () => {
   const [data, setData] = useState({})
   const [message, setMessage] = useState("")
   const navigate = useNavigate()
+  let obj = useContext(Ct)
 
   let fun = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -14,11 +16,31 @@ const Updatepassword = () => {
   let reset = () => {
     axios.post("http://localhost:5000/resetpassword", data).then((res) => {
       setMessage(res.data.message)
-     if (res.data.message === "Password Reset Done") {
-         setTimeout(() => navigate("/login"), 3000);
-       }
+      if (res.data.message === "Password Reset Done") {
+        setTimeout(() => navigate("/login"), 3000);
+      }
     })
   }
+
+ let otp = () => {
+  if (!data.uid) {
+    setMessage("Please enter your email before requesting OTP.");
+    return;
+  }
+
+  axios.get(`http://localhost:5000/sendotp/${data.uid}`)
+    .then((res) => {
+      console.log(res.data);
+      setMessage(res.data.message || "OTP sent.");
+    })
+    .catch((err) => {
+      console.error(err);
+      setMessage("Error sending OTP. Please try again.");
+    });
+}
+
+
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -61,6 +83,7 @@ const Updatepassword = () => {
         >
           Reset Password
         </button>
+        <button className='text-blue-500' onClick={otp}><p>Resend OTP?</p></button>
       </div>
     </div>
   )

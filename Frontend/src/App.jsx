@@ -11,6 +11,10 @@ import Addproduct from './components/Addproduct';
 import Resetpassword from './components/Resetpassword';
 import Updatepassword from './components/Updatepassword';
 import Cookies from 'js-cookie';
+import Knowmore from './components/Knowmore';
+import Retailer from './components/Retailer';
+import Updateproduct from './components/Updateproduct';
+import Allusers from './components/Allusers';
 
 const App = () => {
   const [state, setState] = useState({ token: '', uid: '', role: '', name: '' });
@@ -44,6 +48,10 @@ const App = () => {
               <Route path="/addproduct" element={<Addproduct />} />
               <Route path="/resetpassword" element={<Resetpassword />} />
               <Route path="/updatepassword" element={<Updatepassword />} />
+              <Route path="/knowmore/:pid" element={<Knowmore />} />
+              <Route path="/myproducts" element={<Retailer />} />
+              <Route path="/updateproduct/:_id" element={<Updateproduct />} />
+              <Route path="/allusers" element={<Allusers />} />
             </Routes>
           </div>
         </Ct.Provider>

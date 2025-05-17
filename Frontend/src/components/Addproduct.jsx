@@ -38,7 +38,7 @@ const Addproduct = () => {
     for (let p in data) {
       fs.append(p, data[p]);
     }
-    fs.append("rid", uid);
+    fs.append("retailerId", uid);
 
     axios.post("http://localhost:5000/addproduct", fs).then((res) => {
       setMessage(res.data.message);

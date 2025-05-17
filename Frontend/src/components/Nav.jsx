@@ -22,15 +22,17 @@ const Nav = () => {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex w-full justify-evenly text-lg">
-           <Link to="/" className="font-bold hover:text-yellow-300 transition">Home</Link>
-          {obj.state.token=="" &&<Link to="/register" className="font-bold hover:text-yellow-300 transition">Register</Link>}
-          {obj.state.token=="" &&<Link to="/login" className="font-bold hover:text-yellow-300 transition">Login</Link>}
-          {obj.state.token!="" && obj.state.role!="user" && <Link to="/addproduct" className="font-bold hover:text-yellow-300 transition">Add Product</Link>}
-          {obj.state.token!="" &&<Link to="/cart" className="font-bold hover:text-yellow-300 transition">Cart</Link>}
-          {obj.state.token!="" &&<Link to="/logout" className="font-bold hover:text-yellow-300 transition">Logout</Link>}
+          <Link to="/" className="font-bold hover:text-yellow-300 transition">Home</Link>
+          {obj.state.token == "" && <Link to="/register" className="font-bold hover:text-yellow-300 transition">Register</Link>}
+          {obj.state.token == "" && <Link to="/login" className="font-bold hover:text-yellow-300 transition">Login</Link>}
+          {obj.state.token != "" && obj.state.role != "user" && <Link to="/addproduct" className="font-bold hover:text-yellow-300 transition">Add Product</Link>}
+          {obj.state.token != "" && obj.state.role == "retailer" && <Link to="/myproducts" className="font-bold hover:text-yellow-300 transition">My Products</Link>}
+          {obj.state.token != "" && obj.state.role == "admin" && <Link to="allusers" className='font-bold hover:text-yellow-300 transition'>All Users</Link>}
+          {obj.state.token != "" && <Link to="/cart" className="font-bold hover:text-yellow-300 transition">Cart</Link>}
+          {obj.state.token != "" && <Link to="/logout" className="font-bold hover:text-yellow-300 transition">Logout</Link>}
         </div>
 
-        {obj.state.token!="" &&<div className="hidden md:block text-lg font-bold pr-10">
+        {obj.state.token != "" && <div className="hidden md:block text-lg font-bold pr-10">
           {obj?.state?.name ? `${obj.state.name}` : 'Guest'}
         </div>}
       </div>
@@ -39,12 +41,12 @@ const Nav = () => {
       {menuOpen && (
         <div className="md:hidden flex flex-col items-center bg-black text-white space-y-2 pb-4 text-base">
           <Link to="/" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Home</Link>
-          {obj.state.token=="" &&<Link to="/register" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Register</Link>}
-          {obj.state.token=="" &&<Link to="/login" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Login</Link>}
-          {obj.state.token!="" && obj.state.role!="user" && <Link to="/addproduct" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Add Product</Link>}
-          {obj.state.token!="" &&<Link to="/cart" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Cart</Link>}
-          {obj.state.token!="" &&<Link to="/logout" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Logout</Link>}
-          {obj.state.token!="" &&<p className="pt-2 text-lg font-bold pr-10">
+          {obj.state.token == "" && <Link to="/register" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Register</Link>}
+          {obj.state.token == "" && <Link to="/login" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Login</Link>}
+          {obj.state.token != "" && obj.state.role != "user" && <Link to="/addproduct" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Add Product</Link>}
+          {obj.state.token != "" && <Link to="/cart" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Cart</Link>}
+          {obj.state.token != "" && <Link to="/logout" className="font-bold hover:text-yellow-300" onClick={toggleMenu}>Logout</Link>}
+          {obj.state.token != "" && <p className="pt-2 text-lg font-bold pr-10">
             {obj?.state?.name ? `${obj.state.name}` : 'Guest'}
           </p>}
         </div>

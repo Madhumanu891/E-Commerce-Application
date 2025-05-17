@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   let [data, setData] = useState({
@@ -9,6 +10,7 @@ const Register = () => {
     role: '',
   });
   let [message, setMessage] = useState('');
+  let navigate=useNavigate()
 
   const fun = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -18,6 +20,7 @@ const Register = () => {
     axios.post('http://localhost:5000/register', data).then((res) => {
       setMessage(res.data.message);
       setData({ _id: '', name: '', password: '', role: '' });
+      setTimeout(() => navigate("/login"), 2000);
     });
   };
 
